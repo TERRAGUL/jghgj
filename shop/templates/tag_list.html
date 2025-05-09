@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<ul class="product-list">
+    <li class="product-card">
+        <div class="product-info">
+            {% for tag in tags %}
+                <h3><a href="{% url 'products_by_tag' tag.id %}" class="btn">{{ tag.name }}</a></h3>
+            {% empty %}
+                <p>Тегов пока нет.</p>
+            {% endfor %}
+        </div>
+    </li>
+</ul>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+<div class="main-container">
+    <div class="intro-block">
+        {% if menu == 'main' %}
+        <h1>Список товаров</h1>
+        {% endif %}
+        {% if menu == 'category' %}
+        <h1>Список категорий</h1>
+        {% endif %}
+        {% if menu == 'tags' %}
+        <h1>Список тегов</h1>
+        {% endif %}
+        <div class="product-buttons" style="gap: 10px; flex-wrap: wrap; justify-content: center;">
+            {% if menu == 'main' %}
+            <a href="/product/0/edit/" class="btn">Добавить товар</a>
+            <a href="/" class="btn">Сбросить все фильтры</a>
+            {% endif %}
+            {% if menu == 'category' %}
+            <a href="/" class="btn">Главная страница</a>
+            <a href="/categories/add/" class="btn">Добавить категорию</a>
+            {% endif %}
+            {% if menu == 'tags' %}
+            <a href="/" class="btn">Главная страница</a>
+            <a href="/tags/add/" class="btn">Добавить тег</a>
+            {% endif %}
+        </div>
+    </div>
+</div>

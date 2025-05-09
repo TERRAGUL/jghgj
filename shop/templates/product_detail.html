@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="intro-block">
+      {% if product.image %}
+        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="main-image">
+      {% endif %}
+      <div class="intro-text">
+        <h1>{{ product.name }}</h1>
+        <p>{{ product.description }}</p>
+        <p class="product-price">Цена: {{ product.price }} ₽</p>
+      </div>
+    </div>
+
+    <div class="intro-block">
+      <h2>Категория:</h2>
+      {% if product.category %}
+        <ul class="product-list">
+          <li class="product-card">
+            <div class="product-info">
+              <p><a href="{% url 'products_by_category' product.category.id %}" class="btn">{{ product.category.name }}</a></p>
+            </div>
+          </li>
+        </ul>
+      {% else %}
+        <p>Нет категории</p>
+      {% endif %}
+    </div>
+
+    <div class="intro-block">
+      <h2>Теги:</h2>
+      <ul class="product-list">
+        <li class="product-card">
+          <div class="product-info">
+        {% for tag in product.tags.all %}
+              <p><a href="{% url 'products_by_tag' tag.id %}" class="btn">{{ tag.name }}</a></p>
+        {% empty %}
+              <p>Нет тегов</p>
+        {% endfor %}
+      </div>
+    </li>
+      </ul>
+    </div>
+
+    <a href="{% url 'add_to_cart' product.id %}" class="btn">Добавить в корзину</a>
+
+
+{% endblock %}

@@ -1,0 +1,11 @@
+body {
+    font-family: Arial;
+    padding: 20px;
+}
+
+.header {
+    text-align: center;
+    background: linear-gradient(900deg, #00bfff, #ff005d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

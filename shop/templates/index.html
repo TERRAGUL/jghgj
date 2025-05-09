@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="intro-block">
+    <img src="/static/images/main.png" alt="SushiLuk" class="main-image">
+    <div class="intro-text">
+      <h1>Добро пожаловать в SushiLuk!</h1>
+      <p>Свежие суши и роллы с доставкой — вкус, которому доверяют! Закажите сейчас и окунитесь в атмосферу
+        Японии вместе с SushiLuk.</p>
+    </div>
+  </div>
+
+  <ul class="product-list">
+    {% for product in products %}
+    <li class="product-card">
+      {% if product.image %}
+      <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image">
+      {% endif %}
+      <div class="product-info">
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.description }}</p>
+        <p class="product-price">{{ product.price }} ₽</p>
+        <div class="product-buttons">
+          <a href="{% url 'product_detail' product.id %}" class="btn">Подробнее</a>
+          <a href="/product/{{ product.id }}/edit" class="btn btn-edit">Редактировать</a>
+          <a href="{% url 'add_to_cart' product.id %}" class="btn">В корзину</a>
+        </div>        
+      </div>
+    </li>
+    {% empty %}
+    <li>Нет товаров.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
